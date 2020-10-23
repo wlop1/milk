@@ -1,0 +1,949 @@
+//
+//  main.cpp
+//  CG测试
+//
+//  Created by 王浩宇 on 2020/3/22.
+//  Copyright © 2020 王浩宇. All rights reserved.
+//
+
+//银行存款（类与对象）
+//#include <iostream>
+//#include<iomanip>
+//using namespace std;
+//
+//
+//
+//class Account {
+//    public:
+//        double init(  string newid, string newname , string newsex , int newage ,  double newmoney );
+//        double deposit( double a );
+//        double withdraw( double b);
+//        void printmoney();
+//
+//    private:
+//        string id ;
+//        string name ;
+//        string sex ;
+//        int age ;
+//        double money;
+//
+//    };
+//
+//void Account::printmoney ()
+//{
+//    cout << name << "的存款为" << setprecision(2) << setiosflags(ios::fixed | ios::showpoint) << money <<endl ;                             //强制输出money为两位小数（12000.89  0.00）
+//}
+//
+//double Account::deposit(double a)
+//{
+//    if(100*a-(int)(100*a)!=0)            //判断输入数字小数部分是否为两位
+//        cout << "您输入的金额不合法" <<endl ;
+//    else money += a;
+//    return money;
+//}
+//
+//double Account::withdraw(double b){
+//    if( 100*b-(int)(100*b)!=0 )
+//        cout <<"您输入的金额不合法" <<endl ;
+//    else if( b>money )
+//        cout <<"您的存款金额不足" <<endl ;
+//    else money -= b;
+//    return money;
+//}
+//
+//double Account::init(  string newid, string newname , string newsex , int newage ,  double newmoney )
+//{
+//    id = newid;
+//    name = newname;
+//    sex =newsex;
+//    age = newage;
+//    money = newmoney;
+//    if(100*newmoney - (int)(100*newmoney) != 0)
+//    {cout <<"您输入的金额不合法" <<endl ;
+//        money = 0.00 ;
+//    }
+//
+//    return 0;
+//}
+//
+//
+//int  main()
+//{
+//        Account  tom;
+//        tom.init("32020320011001876X",  "Tom  Black",  "男",  19,  2000.89);
+//        tom.printmoney();//输出：Tom  Black的存款为2000.89
+//        tom.deposit(89.471);//输出：您输入的金额不合法
+//        tom.printmoney();//输出：Tom  Black的存款为2000.89
+//        tom.deposit(10000);
+//        tom.printmoney();//输出：Tom  Black的存款为12000.89
+//        tom.withdraw(10001);
+//        tom.printmoney();//输出：Tom  Black的存款为1999.89
+//        tom.withdraw(10000.123);//输出：您输入的金额不合法
+//        tom.printmoney();//输出：Tom  Black的存款为1999.89
+//        tom.withdraw(10000.9);//输出：您的存款金额不足
+//        tom.printmoney();//输出：Tom  Black的存款为1999.89
+//        Account  jerry;
+//        jerry.init("320203200910116569",  "Jerry  Black",  "女",  11,  100.956);//输出：您输入的金额不合法
+//        jerry.printmoney();//输出：Jerry  Black的存款为0.00
+//}
+
+
+//油桶计算（类与对象）
+//#include  <iostream>
+//#include<iomanip>
+//#include  <cmath>
+//using  namespace  std;
+//
+//const  double  PI=3.1415926;
+//
+//class cylinder {
+//    public:
+//        double getvolumn();//计算体积
+//        double getarea();//计算表面积
+//       double  init(double newr,double newh);//构造函数
+//        ~cylinder();//析构函数
+//
+//    private:
+//        double r,h;
+//    };
+//    double cylinder::getvolumn()
+//    {
+//        return PI*r*r*h;//返回体积
+//    }
+//    double cylinder::getarea()
+//    {
+//        return PI*r*r*2+2*PI*r*h;//返回面积
+//    }
+//    double cylinder::init(double newh,double newr)
+//    {
+//        r=newr;
+//        h=newh;
+//        cout<<"构造函数被调用"<<endl;
+//        return 0;
+//    }
+//    cylinder::~cylinder()
+//    {
+//        cout<<"析构函数被调用"<<endl;
+//    }
+//
+//
+//
+//
+//
+//int  main()
+//{
+//        double  d,h;
+//        cin>>d>>h;
+//
+//        cylinder can;
+//
+//            can.init(h,d/2);
+//            cout<<fixed<<setprecision(6);
+//            cout<<"油桶的容积是"<<can.getvolumn()<<"  "<<endl;
+//            cout<<"铁皮的面积是"<<can.getarea()<<endl;
+//    }
+
+
+//两类重量和（友元）
+//#include<iostream>
+//using namespace std;
+////请在这里补充类Boat和Car的定义
+//class Car;
+//    class Boat
+//    {
+//    public:
+//    int weight;
+//    friend int totalWeight(Boat &b, Car &c);
+//    Boat(int a):weight(a){}
+////    private:
+////        int weight;
+//    };
+//    class Car
+//    {
+//    public:
+//        int weight;
+//    friend int totalWeight(Boat &b, Car &c);
+//    Car(int a):weight(a){}
+////    private:
+////        int weight;
+//    };
+//
+//
+//
+//
+//int  totalweight(Boat&  b,Car&  c)
+//{
+//        return  b.weight+c.weight;
+//}
+//int  main()
+//{
+//        Boat  b(100);
+//        Car  c(200);
+//        cout<<totalweight(  b,  c)<<endl;
+//        return  0;
+//}
+
+//计算相隔时间
+//#include<iostream>
+//#include<cmath>
+//using namespace std;
+//int smonth[13]={0,31,0,31,30,31,30,31,31,30,31,30,31};//定义一个包含每月天数的函数，2月看情况
+//int sen(int year)//判断闰年的函数
+//{
+//    if((year%4==0&&year%100)||year%400==0)
+//        return 1;//闰年
+//    else
+//        return 0;
+//}
+//class CTime//类
+//{
+//   public:
+//       CTime(int year0,int month0,int day0,int hour0=0,int min0=0,int sec0=0);
+//       //构造函数并且设置默认值
+//       CTime(CTime &p);//拷贝构造函数
+//       ~CTime();//析构函数
+//       int dayDiff(CTime t);//计算天数的函数
+//       void  showTime();//表示日期的函数
+//       int isvalid();
+//       //判断是否合法（说实话我觉得老师这个函数的定义有点多余，而且题目里没有声明，坑死我了）
+//   private:
+//       int month,year,day,hour,min,sec;
+//};
+//CTime::CTime(int year0,int month0,int day0,int hour0,int min0,int sec0)//构造函数
+//{
+//    if(sen(year0))//特判闰年
+//    {
+//        smonth[2]=29;
+//        if(day0<0||day0>smonth[month0])//判断日期是否违法
+//        {
+//            cout<<"date error!"<<endl;
+//            year=0;
+//            month=0;
+//            day=0;
+//            hour=0;
+//            sec=0;
+//            min=0;
+//        }
+//        else if(min0>59||hour0>23||sec0>59)
+//        //判断时间是否违法（分开判断因为输出不同）
+//        {
+//            cout<<"time error!"<<endl;
+//            year=0;
+//            month=0;
+//            day=0;
+//            hour=0;
+//            sec=0;
+//            min=0;
+//        }
+//        else//合法情况
+//        {
+//            year=year0;
+//            month=month0;
+//            day=day0;
+//            hour=hour0;
+//            sec=sec0;
+//            min=min0;
+//        }
+//    }
+//    else//这是不是闰年的时候
+//    {
+//        smonth[2]=28;
+//        if(day0<0||day0>smonth[month0])
+//        {
+//            cout<<"date error!"<<endl;
+//            year=0;
+//            month=0;
+//            day=0;
+//            hour=0;
+//            sec=0;
+//            min=0;
+//        }
+//        else if(min0>59||hour0>23||sec0>59)
+//        {
+//            cout<<"time error!"<<endl;
+//            year=0;
+//            month=0;
+//            day=0;
+//            hour=0;
+//            sec=0;
+//            min=0;
+//        }
+//        else
+//        {
+//            year=year0;
+//            month=month0;
+//            day=day0;
+//            hour=hour0;
+//            sec=sec0;
+//            min=min0;
+//        }
+//    }
+//    cout<<"构造函数被调用"<<endl;
+//}
+//CTime::CTime(CTime &p)//拷贝构造函数
+//{
+//    year=p.year;
+//    month=p.month;
+//    day=p.day;
+//    hour=p.hour;
+//    min=p.min;
+//    sec=p.sec;
+//    cout<<"拷贝构造函数被调用"<<endl;
+//}
+//CTime::~CTime()
+//{
+//    cout<<"析构函数被调用"<<endl;
+//}
+//int CTime::isvalid()
+//{
+//    int i=0;
+//    if(sen(year)&&year!=0)//特判闰年
+//    {
+//        smonth[2]=29;
+//        if(day<0||day>smonth[month]||min>59||hour>23||sec>59)//日期和时间违规（根据题目这里不需要输出XD）
+//        {
+//            year=0;
+//            month=0;
+//            day=0;
+//            hour=0;
+//            sec=0;
+//            min=0;
+//        }
+//        else
+//            i=1;
+//    }
+//    else if(sen(year)==0&&year!=0)
+//    {
+//        smonth[2]=28;
+//        if(day<0||day>smonth[month]||min>59||hour>23||sec>59)
+//        {
+//            year=0;
+//            month=0;
+//            day=0;
+//            hour=0;
+//            sec=0;
+//            min=0;
+//        }
+//        else
+//            i=1;
+//    }
+//    return i;
+//}
+//int CTime::dayDiff(CTime t)
+//{
+//    int dayoff=0,i,year1=t.year,day1=t.day,month1=t.month;
+//    if(year<year1)//对象年大时
+//    {
+//        for(i=year+1;i<year1;i++)//年差
+//        {
+//            if(sen(i))
+//                dayoff+=366;
+//            else
+//                dayoff+=365;
+//        }
+//        if(sen(year))//判断闰年 修改2月天数
+//            smonth[2]=29;
+//        else
+//            smonth[2]=28;
+//        dayoff+=smonth[month]-day;//较小年要加上当前月还剩的天数
+//        for(i=month+1;i<13;i++)//计算完整月天数差
+//        {
+//            dayoff+=smonth[i];
+//        }//year计算结束
+//        //开始计算year1
+//        dayoff+=day1;//因为要加上当前日期所以不需要判断2月（下同上）
+//        if(sen(year1))
+//            smonth[2]=29;
+//        else
+//            smonth[2]=28;
+//        for(i=month1-1;i>0;i--)
+//        {
+//            dayoff+=smonth[i];
+//        }
+//    }
+//    else if(year>year1)//对象年小
+//    {
+//        for(i=year1+1;i<year;i++)//年差
+//        {
+//            if(sen(i))
+//                dayoff+=366;
+//            else
+//                dayoff+=365;
+//        }
+//        if(sen(year1))
+//            smonth[2]=29;
+//        else
+//            smonth[2]=28;
+//        dayoff+=smonth[month1]-day1;//对象年
+//        for(i=month1+1;i<13;i++)
+//        {
+//            dayoff+=smonth[i];
+//        }
+//        if(sen(year))
+//            smonth[2]=29;
+//        else
+//            smonth[2]=28;
+//        for(i=month-1;i>0;i--)
+//        {
+//            dayoff+=smonth[i];
+//        }
+//        dayoff+=day;//当前年
+//    }
+//    else
+//    //同年
+//    {
+//        if(sen(year))
+//            smonth[2]=29;
+//        else
+//            smonth[2]=28;
+//        if(month<month1)//对象月大
+//        {
+//            for(i=month+1;i<month1;i++)
+//            {
+//                dayoff+=smonth[i];
+//            }
+//            dayoff+=day1+smonth[month]-day;
+//        }
+//        else if(month>month1)//对象月小
+//        {
+//            for(i=month1+1;i<month;i++)
+//            {
+//                dayoff+=smonth[i];
+//            }
+//            dayoff+=day+smonth[month1]-day1;
+//        }
+//        else//同月
+//            dayoff+=abs(day-day1);
+//    }
+//    return dayoff;
+//}
+//void CTime::showTime()
+//{
+//    cout<<year<<"/"<<month<<"/"<<day<<" "<<hour<<":"<<min<<":"<<sec<<endl;
+//}
+//int  main()
+//{
+//        int  year,  month,  day,  hour,  minute,  second;
+//        cin  >>  year  >>  month  >>  day  >>  hour  >>  minute  >>  second;
+//        CTime  t1(year,  month,  day,  hour,  minute,  second);
+//        t1.showTime();
+//        CTime  t2(2000,  1,  1);  //利用默认形参将时间初始化为00:00:00
+//        if  (t1.isvalid())          //如果日期和时间合法，则计算天数
+//        {
+//                int  days=0;
+//                days=t1.dayDiff(t2);
+//                cout  <<  "这两天之间相隔了"  <<  days  <<  "天"  <<  endl;
+//                days=t2.dayDiff(t1);
+//                cout  <<  "这两天之间相隔了"  <<  days  <<  "天"  <<  endl;
+//        }
+//    return 0;
+//}
+
+
+//矩阵两对角距离
+//#include <iostream>
+//using  namespace  std;
+//class CPoint//定义记录坐标点的类
+//{
+//public:CPoint(int nx=0,int ny=0);
+////一开始我还定义了CPoint()，然后编译错误，后来知道原因是和上面一个函数功能重合，*因为已经设置了默认值，所以上面的函数也可不给参数*，修复一个知识漏洞
+//           CPoint(CPoint &z);//定义拷贝构造函数
+//           friend class CRectangle;//友元声明，不然下面不能调用CPoint的私有成员
+//private: int x,y;//x，y表示坐标
+//};
+//CPoint::CPoint(int nx,int ny)//有参则赋值
+//{
+//    x=nx;
+//    y=ny;
+//    cout<<"CPoint contstructor with default value(0,0) is called."<<endl;
+//}
+//CPoint::CPoint(CPoint &z)//拷贝构造函数
+//{
+//    x=z.x;
+//    y=z.y;
+//    cout<<"CPoint copy contstructor is called."<<endl;
+//}
+//class CRectangle//记录矩形参数的类
+//{
+//public:CRectangle();
+//          CRectangle(CPoint p1,CPoint p2);//这里使用CPoint类的数据，赋初值
+//          CRectangle(int na,int nb,int nc,int nd);//这里使用main中定义的数据，赋初值
+//          CRectangle(CRectangle &z);//这里调用拷贝构造函数
+//          int GetArea();//输出面积
+//private:CPoint a,b;//定义CPoint类的对象成员
+//};
+//int CRectangle::GetArea()
+//{
+//    return (b.x-a.x)*(b.y-a.y);//直接调用参数计算
+//}
+//CRectangle::CRectangle():a(0),b(0)//无参就用(0)或者()初始化对象
+//{
+//    cout<<"CRectangle default contstructor is called."<<endl;
+//}
+//CRectangle::CRectangle(CPoint p1,CPoint p2):a(p1),b(p2)//依然是初始化对象，这次学到了可以用类的对象来初始化（老师没讲过，没有参考书，还是靠大佬和百度）
+//{
+//    cout<<"CRectangle contstructor with (CPoint,CPoint) is called."<<endl;
+//}
+//CRectangle::CRectangle(int na,int nb,int nc,int nd):a(na,nb),b(nc,nd)
+////初始化，没想到这样也可以
+//{
+//    cout<<"CRectangle contstructor with (int,int,int,int) is called."<<endl;
+//}
+//CRectangle::CRectangle(CRectangle &z):a(z.a),b(z.b)
+////这样的初始化竟然也可以，学到了
+//{
+//    cout<<"CRectangle copy contstructor is called."<<endl;
+//}
+//int main()
+//
+//{
+//
+//    int a=1, b=1, c=6, d=11;
+//
+//    cout<<"# Define p1 ######"<<endl;
+//
+//    CPoint p1;
+//
+//    cout<<"# Define p2 ######"<<endl;
+//
+//    CPoint p2(10,20);
+//
+//    cout<<"# Define rect1 ######"<<endl;
+//
+//    CRectangle rect1;
+//
+//    cout<<"# Define rect2 ######"<<endl;
+//
+//    CRectangle rect2(p1, p2);
+//
+//    cout<<"# Define rect3 ######"<<endl;
+//
+//    CRectangle rect3(a, b, c, d);
+//
+//    cout<<"# Define rect4 ######"<<endl;
+//
+//    CRectangle rect4(rect2);
+//
+//    cout<<"# Calculate area ######"<<endl;
+//
+//    cout << "rect1面积为" << rect1.GetArea() << endl;
+//
+//    cout << "rect2面积为" << rect2.GetArea() << endl;
+//
+//    cout << "rect3面积为" << rect3.GetArea() << endl;
+//
+//    cout << "rect4面积为" << rect4.GetArea() << endl;
+//
+//    system("pause");
+//
+//    return 0;
+//
+//}
+
+//选择题1
+//class Test{
+//public:
+//    Test(){a=0;c=0;}                  //1
+//    int f(int a)const{this->a=a}      //2
+//    static int g(){return a;}         //3
+//    void h(int b){Test::b=b;}         //4 T
+//
+//private:
+//    int a;
+//    static int b;
+//    const int c;
+//}
+//int Test::b=0;
+
+//选择2
+//#include<iostream>
+//using namespace std;
+//class A{
+//public:
+//    static int a;
+//    void init(){a=1;}
+//    A (int a= 2){
+//        init();
+//        a++;
+//    }
+//};
+//int A::a=0;
+//A obj ;
+//int main(){
+//    cout << obj.a <<endl;
+//    return 0;
+//}
+
+
+//CStudent类   对象数组？？
+//#include<iostream>
+//#include<string>
+//using namespace std;
+//class CStudent{
+//public:
+//    CStudent(){             //默认构造函数
+//        cout << "noname is contructing" << endl;
+//        name ="noname";
+//        age = 0;
+//        Count++;
+//    };
+//    CStudent(string s ,int a){    //构造函数      //CStudent(const std::string &s,int a)
+//        name = s;
+//        age = a;
+//        cout << name << " is contructing" <<endl;
+//        Count++;
+//    }
+//    ~CStudent(){
+//        cout << name << " is destructing" <<endl;
+//        Count--;
+//    };
+//    void printname(){
+//        cout << "name:" <<name <<endl;
+//    }
+//    static int getcount(){
+//        return Count;
+//    };
+//private:
+//    string name;
+//    int age;
+//    static int Count;
+//
+//};
+//
+//
+//int CStudent::Count = 0;        //定义静态成员变量，同时初始化为0
+//
+//int  main()
+//{
+//        cout  <<  "现在有学生"  <<  CStudent::getcount()  <<  endl;
+//        {
+//                CStudent  stuB[5];              // ？ ？
+//                stuB[4].printname();
+//                cout  <<  "现在有学生"  <<  CStudent::getcount()  <<  endl;
+//        }
+//        cout  <<  "现在有学生"  <<  CStudent::getcount()  <<  endl;
+//        {
+//                CStudent  stuA[2]  =  {CStudent("Tom",  3),  CStudent("Jerry",  2)};
+//                for  (int  i  =  0;  i  <  2;  i++)
+//                {
+//                        stuA[i].printname();
+//                }
+//                cout  <<  "现在有学生"  <<  CStudent::getcount()  <<  endl;
+//        }
+//        cout  <<  "现在有学生"  <<  CStudent::getcount()  <<  endl;
+//
+//        return  0;
+//}
+
+
+//回调函数
+//实现功能：既能排序整型数，也可以排序字符串
+
+//#include  <iostream>
+//#include  <cstring>
+//using  namespace  std;
+//
+//int  cmpGT(const  int  *p1,  const  int  *p2)
+//{
+////实现两数比较，如果大于，则返回1，等于则返回0，小于则返回-1
+//    if(*p2>*p1) return 1;
+//    else if(*p2==*p1) return 0;
+//    else return -1;
+//}
+//int  cmpLT(const  int  *p1,  const  int  *p2)
+//{
+//    //实现两数比较，如果大于，则返回-1，等于则返回0，小于则返回1
+//    if(*p2>*p1) return -1;
+//    else if(*p1==*p2) return 0;
+//    else return 1;
+//}
+//
+//void  swap(int  *p1,  int  *p2)
+//{
+////实现两个整形变量的值交换
+//
+//    int temp = *p2;
+//    *p2 = *p1;
+//    *p1 = temp;
+//
+//
+//}
+//
+//void  bubble(int  *base,    int(*cmp)(const  int  *,  const  int  *))
+//{
+//    //请在这里补充冒泡排序，请根据main函数中对bubble函数的调用，分析形参的作用
+//
+//    for(int i=0;i<10;i++){
+//        for (int j =0 ;j<10-i-1;j++){
+//             if(cmp(((int *)base+j),((int *)base+j+1))<0)
+//                {
+//                    swap((int *)base+j,(int *)base+(j+1));
+//                }
+//        }
+//
+//    }
+//}
+//
+//int  main()
+//{
+//        int  arr[]  =  {  1,  3,  5,  7,  9,  2,  4,  6,  8,  0  };
+//        int  i  =  0;
+//        bubble(arr,    cmpGT);
+//        for  (i  =  0;  i  <  10;  i++)
+//        {
+//                cout<<arr[i]<<"  ";
+//        }
+//        cout<<endl;
+//
+//        bubble(arr,    cmpLT);
+//        for  (i  =  0;  i  <  10;  i++)
+//        {
+//                cout<<arr[i]<<"  ";
+//        }
+//        cout<<endl;
+//        return  0;
+//}
+
+
+//字符串的最短距离
+//#include<iostream>
+//using namespace std;
+//
+//
+//int main(){
+//    char a[10],b[10];
+//    for(int n=0;n<10;n++){
+//        cin >> a[n];
+//        if(a[n]>65) {
+//            a[n] = a[n]-32;
+//        }
+//    }
+//    for(int m=0;m<10;m++){
+//        cin >> b[m];
+//        if(b[m]>65) {
+//            b[m] = b[m]-32;
+//        }
+//    }
+//    int sum =0;
+//    for(int i=0;i<10;i++){
+//        for(int j=0;j<10;j++){
+//            while(a[i]!=0||b[j]!=0){
+//                if(a[i]==b[j]) sum =0;
+//                else if(a[i]>b[j]) {
+//                    while((a[i]-b[j])>sum) sum = a[i]-b[j];
+//                }
+//                else if(a[i]<b[j]) {
+//                    while((b[j]-a[i])>sum) sum = a[i]-b[j];
+//                }
+//            }
+//        }
+//    }
+//    cout << sum;
+//}
+
+//正确答案
+//#include<iostream>
+//using namespace std;
+//
+//int minx(int min,string str1,string str2){
+//    int length1=str1.length();
+//    int length2=str2.length();
+//    min=abs(str1[0]-str2[0]);
+//    for(int i=0;i<length1;i++){
+//        for(int j=0;j<length2;j++){
+//            if(abs(str1[i]-str2[j])<min){
+//                min=abs(str1[i]-str2[j]);
+//            }
+//        }
+//    }
+//    return min;
+//}
+////字母大小写转换
+//void tostring(string &str){
+//    int i=0;
+//    int length=str.length();
+//    while(i<length){
+//        if(str[i]>='A'&&str[i]<='Z'){
+//            str[i]=str[i]+32;
+//        }
+//        i++;
+//    }
+//}
+//int main(){
+//    string str1,str2;
+//    int min;
+//    cin>>str1;
+//    cin>>str2;
+//    tostring(str1);
+//    tostring(str2);
+//    min=minx(min,str1,str2);
+//    cout<<min;
+//}
+
+//运算符重载（复数）
+//#include  <iostream>
+//using  namespace  std;
+//
+//class Complex {
+//public:
+//    Complex(double r = 0.0, double i = 0.0) :real(r), img(i) {};
+//    friend Complex operator+(const Complex& c1, const Complex& c2);
+//    friend Complex operator-(const Complex& c1, const Complex& c2);
+//
+//    void print();
+//private:
+//    double real,img;
+//};
+//
+// Complex operator+(const Complex& c1, const Complex& c2) {
+//     return Complex(c1.real + c2.real, c1.img + c2.img);
+//}
+// Complex operator - (const Complex& c1,const Complex& c2)  {
+//     return Complex(c1.real - c2.real, c1.img - c2.img);
+// }
+//
+// void  Complex::print(){
+//     if (img > 0) {
+//         if (img == 1)
+//             cout << real << "+i" << endl;
+//         else
+//             cout << "(" << real << ")+(" << img << "i" << ")" << endl;
+//     }
+//     if (img == 0) {
+//         cout << real << endl;
+//     }
+//     if (img < 0)
+//     {
+//         if (img == -1)
+//             cout << real << "-i" << endl;
+//         else
+//             cout << "(" << real << ")+(" << img << "i" << ")" << endl;
+//     }
+//
+// }
+//int  main()
+//{
+//        Complex  a(3,4),b(1,-1),c;
+//        c=a+b;
+//        cout<<"a+b=";
+//        c.print();
+//        cout<<endl;
+//        c=a-b;
+//        cout<<"a-b=";
+//        c.print();
+//        cout<<endl;
+//        c=a+100;
+//        cout<<"a+100=";
+//        c.print();
+//        cout<<endl;
+//        c=a-2.5;
+//        cout<<"a-2.5=";
+//        c.print();
+//        cout<<endl;
+//        c=100+a;
+//        cout<<"100+a=";
+//        c.print();
+//        cout<<endl;
+//        c=2.5-a;
+//        cout<<"2.5-a=";
+//        c.print();
+//        cout<<endl;
+//        return  0;
+//}
+
+//#include <iostream>
+//using  namespace  std;
+//class Point
+//{
+//    int m_x, m_y;//x，y表示坐标
+//public:
+//    Point(int x=0, int y=0) { m_x = x; m_y = y; }//构造函数设置默认参数
+//    Point& operator ++();//前置++
+//    Point operator ++(int);//后置++
+//    friend ostream& operator <<(ostream& cout, Point p);
+//    //cout 是 ostream 类的对象。ostream 类和 cout 都是在头文件 <iostream> 中声明的。ostream 类将<<重载为成员函数，所以<<才能和cout一起使用
+//    //这里是友元函数，下面输出的时候才能调用私有成员
+//};
+//Point& Point::operator++()//前置单目运算符重载函数  用引用是减少临时对象产生，提高前置效率
+//{
+//    m_x++;
+//    m_y++;
+//    return *this;//返回当前对象（已经做了加1运算)
+//}
+//Point Point::operator++(int)
+//{//注意形参表中的整形形参
+//    Point old = *this;//old记录对象加1之前的值
+//    ++(*this);//利用之前定义的前置++对当前对象加1
+//    return old;//return后old就会消失，如果上面用引用符号会产生内存的非法访问
+//}
+//ostream& operator<<(ostream& cout, Point p)
+//{
+//    cout << "(" << p.m_x << ","<<p.m_y << ")" << endl;//co引用的其实是cout函数，属于iostream库
+//    return cout;
+//}
+//int  main()
+//{
+//    Point  a(1, 3);
+//    cout << a;
+//    cout << a++;
+//    cout << ++a;
+//    return  0;
+//}
+
+//#include <iostream>
+//class base
+//{
+//       int n;
+//public:
+//       base(int a,int b,int c)
+//       {
+//              n=a;x=b;y=c;
+//       }
+//protected:
+//       int x,y;
+//
+//};
+//class derived:public base
+//{
+//public:
+//       int m;
+//       derived(int a,int b,int c,int d):base(a,b,c){m=d;}
+//};
+//void main()
+//{
+//       derived s(1,2,3,4);//①
+//       cout<<s.n<<endl;//②
+//       cout<<s.x<<s.y<<endl;//③
+//       cout<<s.m<<endl;//④
+//}
+
+
+//文件拷贝
+#include <iostream>
+#include<fstream>//文件输出输入流的库
+#include<vector>//使用vector数组，解决数据个数不确定的问题
+#include <algorithm>//使用这个库中的sort函数，简化代码
+using namespace std;
+int main()
+{
+    fstream a, b;//定义两个数据流
+    a.open("a.txt", ios::in);//读取打开文件,注意是ios::in
+    vector<double> data;//定义一个vector数组，储存数据
+    double x;
+    while (a >> x)
+    {
+        data.push_back(x);//在vector数组中增加成员
+    }
+    sort(data.begin(), data.end());//从小到大排序
+    b.open("b.txt", ios::out);//输入（写）打开文件，注意是ios::out
+    if (b)
+    {
+        for (int i=0;i<data.size(); i++)//注意data.size后面要加（）,表示data数组共有多少个成员
+        {
+            b << data[i] << " ";//一个一个将数据输出到b
+        }
+    }
+    a.close();//一定要关闭文件！！！
+    b.close();//一定要关闭文件！！！
+    return 0;
+}
