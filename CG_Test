@@ -31,7 +31,8 @@
 //
 //void Account::printmoney ()
 //{
-//    cout << name << "的存款为" << setprecision(2) << setiosflags(ios::fixed | ios::showpoint) << money <<endl ;                             //强制输出money为两位小数（12000.89  0.00）
+//    cout << name << "的存款为" << setprecision(2) << setiosflags(ios::fixed | ios::showpoint) << money <<endl ;                             
+//强制输出money为两位小数（12000.89  0.00）
 //}
 //
 //double Account::deposit(double a)
@@ -713,7 +714,7 @@
 //int main(){
 //    char a[10],b[10];
 //    for(int n=0;n<10;n++){
-//        cin >> a[n];
+//        cin >> a[n]; 
 //        if(a[n]>65) {
 //            a[n] = a[n]-32;
 //        }
